@@ -9,12 +9,85 @@
 /* Begin PBXBuildFile section */
 		1EDE89992803C045001FA144 /* Voshod.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89982803C045001FA144 /* Voshod.docc */; };
 		1EDE899A2803C045001FA144 /* Voshod.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89972803C045001FA144 /* Voshod.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1EDE89A92803C0CF001FA144 /* lua.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89A22803C0CE001FA144 /* lua.h */; };
+		1EDE89AA2803C0CF001FA144 /* luajit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89A32803C0CE001FA144 /* luajit-umbrella.h */; };
+		1EDE89AB2803C0CF001FA144 /* luaconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89A42803C0CF001FA144 /* luaconf.h */; };
+		1EDE89AC2803C0CF001FA144 /* luajit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89A62803C0CF001FA144 /* luajit.h */; };
+		1EDE89AD2803C0CF001FA144 /* lualib.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89A72803C0CF001FA144 /* lualib.h */; };
+		1EDE89AE2803C0CF001FA144 /* lauxlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89A82803C0CF001FA144 /* lauxlib.h */; };
+		1EDE89B02803C0F3001FA144 /* libluajit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89AF2803C0F3001FA144 /* libluajit.a */; };
+		1EDE89B42803C1C4001FA144 /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89B32803C1C4001FA144 /* VM.swift */; };
+		1EDE89B72803C251001FA144 /* prerun.lua in Resources */ = {isa = PBXBuildFile; fileRef = 1EDE89B62803C251001FA144 /* prerun.lua */; };
+		1EDE89B92803CBE9001FA144 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89B82803CBE9001FA144 /* Plugin.swift */; };
+		1EDE89BB2803D195001FA144 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89BA2803D195001FA144 /* Bridge.swift */; };
+		1EDE89BD2804575D001FA144 /* VM.Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89BC2804575D001FA144 /* VM.Value.swift */; };
+		1EDE89BF28045C15001FA144 /* LuaConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89BE28045C15001FA144 /* LuaConvertible.swift */; };
+		1EDE89C128049FD9001FA144 /* Limits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89C028049FD9001FA144 /* Limits.swift */; };
+		1EDE89C32804B38E001FA144 /* Hub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89C22804B38E001FA144 /* Hub.swift */; };
+		1EDF48B72805FF820012E0DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48B62805FF820012E0DE /* AppDelegate.swift */; };
+		1EDF48B92805FF820012E0DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48B82805FF820012E0DE /* SceneDelegate.swift */; };
+		1EDF48BB2805FF820012E0DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48BA2805FF820012E0DE /* ViewController.swift */; };
+		1EDF48BE2805FF820012E0DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EDF48BC2805FF820012E0DE /* Main.storyboard */; };
+		1EDF48C02805FF850012E0DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EDF48BF2805FF850012E0DE /* Assets.xcassets */; };
+		1EDF48C32805FF850012E0DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EDF48C12805FF850012E0DE /* LaunchScreen.storyboard */; };
+		1EDF48C92805FF960012E0DE /* Voshod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89942803C045001FA144 /* Voshod.framework */; };
+		1EDF48CA2805FF960012E0DE /* Voshod.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89942803C045001FA144 /* Voshod.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1EDF48CF280649110012E0DE /* Id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48CE280649100012E0DE /* Id.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1EDF48CB2805FF960012E0DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1EDE898B2803C045001FA144 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EDE89932803C045001FA144;
+			remoteInfo = Voshod;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1EDF48CD2805FF960012E0DE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1EDF48CA2805FF960012E0DE /* Voshod.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1EDE89942803C045001FA144 /* Voshod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Voshod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EDE89972803C045001FA144 /* Voshod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Voshod.h; sourceTree = "<group>"; };
 		1EDE89982803C045001FA144 /* Voshod.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Voshod.docc; sourceTree = "<group>"; };
+		1EDE89A22803C0CE001FA144 /* lua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lua.h; sourceTree = "<group>"; };
+		1EDE89A32803C0CE001FA144 /* luajit-umbrella.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "luajit-umbrella.h"; sourceTree = "<group>"; };
+		1EDE89A42803C0CF001FA144 /* luaconf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luaconf.h; sourceTree = "<group>"; };
+		1EDE89A52803C0CF001FA144 /* module.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		1EDE89A62803C0CF001FA144 /* luajit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luajit.h; sourceTree = "<group>"; };
+		1EDE89A72803C0CF001FA144 /* lualib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lualib.h; sourceTree = "<group>"; };
+		1EDE89A82803C0CF001FA144 /* lauxlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lauxlib.h; sourceTree = "<group>"; };
+		1EDE89AF2803C0F3001FA144 /* libluajit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libluajit.a; sourceTree = "<group>"; };
+		1EDE89B32803C1C4001FA144 /* VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM.swift; sourceTree = "<group>"; };
+		1EDE89B62803C251001FA144 /* prerun.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = prerun.lua; sourceTree = "<group>"; };
+		1EDE89B82803CBE9001FA144 /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
+		1EDE89BA2803D195001FA144 /* Bridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
+		1EDE89BC2804575D001FA144 /* VM.Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM.Value.swift; sourceTree = "<group>"; };
+		1EDE89BE28045C15001FA144 /* LuaConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaConvertible.swift; sourceTree = "<group>"; };
+		1EDE89C028049FD9001FA144 /* Limits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Limits.swift; sourceTree = "<group>"; };
+		1EDE89C22804B38E001FA144 /* Hub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub.swift; sourceTree = "<group>"; };
+		1EDF48B42805FF820012E0DE /* VoshodDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoshodDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EDF48B62805FF820012E0DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1EDF48B82805FF820012E0DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		1EDF48BA2805FF820012E0DE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1EDF48BD2805FF820012E0DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1EDF48BF2805FF850012E0DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1EDF48C22805FF850012E0DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1EDF48C42805FF850012E0DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EDF48CE280649100012E0DE /* Id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Id.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -22,6 +95,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDE89B02803C0F3001FA144 /* libluajit.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EDF48B12805FF820012E0DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EDF48C92805FF960012E0DE /* Voshod.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +114,9 @@
 			isa = PBXGroup;
 			children = (
 				1EDE89962803C045001FA144 /* Voshod */,
+				1EDF48B52805FF820012E0DE /* VoshodDemoApp */,
 				1EDE89952803C045001FA144 /* Products */,
+				1EDF48C82805FF960012E0DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -40,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				1EDE89942803C045001FA144 /* Voshod.framework */,
+				1EDF48B42805FF820012E0DE /* VoshodDemoApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -47,10 +132,88 @@
 		1EDE89962803C045001FA144 /* Voshod */ = {
 			isa = PBXGroup;
 			children = (
+				1EDE89B52803C201001FA144 /* Scripts */,
+				1EDE89B22803C1AC001FA144 /* VM */,
+				1EDE89B12803C18D001FA144 /* PluginSupport */,
+				1EDE89A02803C0B9001FA144 /* luajit */,
 				1EDE89972803C045001FA144 /* Voshod.h */,
 				1EDE89982803C045001FA144 /* Voshod.docc */,
 			);
 			path = Voshod;
+			sourceTree = "<group>";
+		};
+		1EDE89A02803C0B9001FA144 /* luajit */ = {
+			isa = PBXGroup;
+			children = (
+				1EDE89AF2803C0F3001FA144 /* libluajit.a */,
+				1EDE89A12803C0BF001FA144 /* include */,
+			);
+			path = luajit;
+			sourceTree = "<group>";
+		};
+		1EDE89A12803C0BF001FA144 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				1EDE89A82803C0CF001FA144 /* lauxlib.h */,
+				1EDE89A22803C0CE001FA144 /* lua.h */,
+				1EDE89A42803C0CF001FA144 /* luaconf.h */,
+				1EDE89A32803C0CE001FA144 /* luajit-umbrella.h */,
+				1EDE89A62803C0CF001FA144 /* luajit.h */,
+				1EDE89A72803C0CF001FA144 /* lualib.h */,
+				1EDE89A52803C0CF001FA144 /* module.modulemap */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		1EDE89B12803C18D001FA144 /* PluginSupport */ = {
+			isa = PBXGroup;
+			children = (
+				1EDE89B82803CBE9001FA144 /* Plugin.swift */,
+			);
+			path = PluginSupport;
+			sourceTree = "<group>";
+		};
+		1EDE89B22803C1AC001FA144 /* VM */ = {
+			isa = PBXGroup;
+			children = (
+				1EDE89B32803C1C4001FA144 /* VM.swift */,
+				1EDE89BC2804575D001FA144 /* VM.Value.swift */,
+				1EDE89BA2803D195001FA144 /* Bridge.swift */,
+				1EDE89BE28045C15001FA144 /* LuaConvertible.swift */,
+				1EDE89C028049FD9001FA144 /* Limits.swift */,
+				1EDE89C22804B38E001FA144 /* Hub.swift */,
+				1EDF48CE280649100012E0DE /* Id.swift */,
+			);
+			path = VM;
+			sourceTree = "<group>";
+		};
+		1EDE89B52803C201001FA144 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				1EDE89B62803C251001FA144 /* prerun.lua */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		1EDF48B52805FF820012E0DE /* VoshodDemoApp */ = {
+			isa = PBXGroup;
+			children = (
+				1EDF48B62805FF820012E0DE /* AppDelegate.swift */,
+				1EDF48B82805FF820012E0DE /* SceneDelegate.swift */,
+				1EDF48BA2805FF820012E0DE /* ViewController.swift */,
+				1EDF48BC2805FF820012E0DE /* Main.storyboard */,
+				1EDF48BF2805FF850012E0DE /* Assets.xcassets */,
+				1EDF48C12805FF850012E0DE /* LaunchScreen.storyboard */,
+				1EDF48C42805FF850012E0DE /* Info.plist */,
+			);
+			path = VoshodDemoApp;
+			sourceTree = "<group>";
+		};
+		1EDF48C82805FF960012E0DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -61,6 +224,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EDE899A2803C045001FA144 /* Voshod.h in Headers */,
+				1EDE89AE2803C0CF001FA144 /* lauxlib.h in Headers */,
+				1EDE89AD2803C0CF001FA144 /* lualib.h in Headers */,
+				1EDE89AA2803C0CF001FA144 /* luajit-umbrella.h in Headers */,
+				1EDE89A92803C0CF001FA144 /* lua.h in Headers */,
+				1EDE89AC2803C0CF001FA144 /* luajit.h in Headers */,
+				1EDE89AB2803C0CF001FA144 /* luaconf.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +254,25 @@
 			productReference = 1EDE89942803C045001FA144 /* Voshod.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		1EDF48B32805FF820012E0DE /* VoshodDemoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EDF48C72805FF850012E0DE /* Build configuration list for PBXNativeTarget "VoshodDemoApp" */;
+			buildPhases = (
+				1EDF48B02805FF820012E0DE /* Sources */,
+				1EDF48B12805FF820012E0DE /* Frameworks */,
+				1EDF48B22805FF820012E0DE /* Resources */,
+				1EDF48CD2805FF960012E0DE /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1EDF48CC2805FF960012E0DE /* PBXTargetDependency */,
+			);
+			name = VoshodDemoApp;
+			productName = VoshodDemoApp;
+			productReference = 1EDF48B42805FF820012E0DE /* VoshodDemoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -92,9 +280,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					1EDE89932803C045001FA144 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					1EDF48B32805FF820012E0DE = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
@@ -113,6 +305,7 @@
 			projectRoot = "";
 			targets = (
 				1EDE89932803C045001FA144 /* Voshod */,
+				1EDF48B32805FF820012E0DE /* VoshodDemoApp */,
 			);
 		};
 /* End PBXProject section */
@@ -122,6 +315,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDE89B72803C251001FA144 /* prerun.lua in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EDF48B22805FF820012E0DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EDF48C32805FF850012E0DE /* LaunchScreen.storyboard in Resources */,
+				1EDF48C02805FF850012E0DE /* Assets.xcassets in Resources */,
+				1EDF48BE2805FF820012E0DE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,11 +336,56 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EDE89BB2803D195001FA144 /* Bridge.swift in Sources */,
+				1EDE89B92803CBE9001FA144 /* Plugin.swift in Sources */,
+				1EDF48CF280649110012E0DE /* Id.swift in Sources */,
+				1EDE89BF28045C15001FA144 /* LuaConvertible.swift in Sources */,
+				1EDE89C32804B38E001FA144 /* Hub.swift in Sources */,
+				1EDE89C128049FD9001FA144 /* Limits.swift in Sources */,
+				1EDE89B42803C1C4001FA144 /* VM.swift in Sources */,
+				1EDE89BD2804575D001FA144 /* VM.Value.swift in Sources */,
 				1EDE89992803C045001FA144 /* Voshod.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1EDF48B02805FF820012E0DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EDF48BB2805FF820012E0DE /* ViewController.swift in Sources */,
+				1EDF48B72805FF820012E0DE /* AppDelegate.swift in Sources */,
+				1EDF48B92805FF820012E0DE /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1EDF48CC2805FF960012E0DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EDE89932803C045001FA144 /* Voshod */;
+			targetProxy = 1EDF48CB2805FF960012E0DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1EDF48BC2805FF820012E0DE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EDF48BD2805FF820012E0DE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		1EDF48C12805FF850012E0DE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1EDF48C22805FF850012E0DE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1EDE899B2803C045001FA144 /* Debug */ = {
@@ -272,12 +521,17 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Voshod/luajit/include/";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Voshod/luajit",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.voshod.lua.Voshod;
@@ -300,6 +554,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Voshod/luajit/include/";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -307,10 +562,70 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Voshod/luajit",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.voshod.lua.Voshod;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1EDF48C52805FF850012E0DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6PY6P5AXVS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VoshodDemoApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.voshod.lua.VoshodDemoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1EDF48C62805FF850012E0DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6PY6P5AXVS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VoshodDemoApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.voshod.lua.VoshodDemoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -334,6 +649,15 @@
 			buildConfigurations = (
 				1EDE899E2803C045001FA144 /* Debug */,
 				1EDE899F2803C045001FA144 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EDF48C72805FF850012E0DE /* Build configuration list for PBXNativeTarget "VoshodDemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EDF48C52805FF850012E0DE /* Debug */,
+				1EDF48C62805FF850012E0DE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

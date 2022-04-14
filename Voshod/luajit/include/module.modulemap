@@ -1,0 +1,4 @@
+module LuaJIT {
+    umbrella header "luajit-umbrella.h"
+    export *
+}
