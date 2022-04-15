@@ -9,18 +9,15 @@ import Foundation
 
 
 public protocol Plugin: AnyObject {
-    static var name: String { get }
-    static var dependencies: [String] { get }
-    
-    static func provideInstance(to vmId: Int) -> Self
     var installerScript: String { get }
     var dependencies: [String] { get }
+    var vm: VM { get }
     
-    func receive(message: LuaConvertible, for channelId: Int) -> LuaConvertible
-}
-
-public extension Plugin {
-    func send(payload: LuaConvertible, to channelId: Id) {
-        
-    }
+    static var dependencies: [Dependency] { get }
+    static var version: Version { get }
+    static var name: String { get }
+    
+    static func provideInstance(for vm: VM, resolvedDependencies: [String: Plugin]) -> Plugin
+    
+    func receive(message: VM.Value) -> VM.Value
 }

@@ -8,200 +8,147 @@
 import Foundation
 import LuaJIT
 
-struct IdentifiedPlugin {
-    var id: Id
-    var plugin: Plugin
-}
-
-public final class MainThreadVM {
-    
-}
+//struct IdentifiedPlugin {
+//    var id: Id
+//    var plugin: Plugin
+//}
 
 public final class VM {
-    public init(pluginTypes: [Plugin.Type]) {
-        guard let state = luaL_newstate() else {
-            fatalError("💥 Failed to create lua_State")
+    private let state: LuaState
+    
+    private var isPrerunCompleted = false
+    
+    private let options: Options
+    
+    public private(set) var plugins: [Plugin] = []
+    
+    private(set) var id: Int = 0
+    
+    private let resolver: DependencyResolver
+    
+    public init(
+        pluginTypes: [Plugin.Type],
+        aliases: [String: Plugin.Type] = [:],
+        options: Options = .default
+    ) throws {
+        guard let state = LuaState() else {
+            throw Error.stateInitializationFailure
         }
-        luaL_openlibs(state)
         
+        state.openLibs()
+        
+        self.options = options
         self.state = state
         
-        makePluginMap(pluginTypes: pluginTypes)
+        resolver = try DependencyResolver(pluginTypes: pluginTypes, aliases: aliases)
     
-        performPrerun()
+        registerCallbacks()
+        try performPrerun()
     }
     
-    public func run(script: String) throws {
-        
+    public func run(script: String, params: [Value] = []) throws {
+        try state.loadString(script: script)
+        params.forEach { state.put(value: $0) }
+        try state.pcall(numberOfArgs: params.count)
     }
     
     public func cancel() {
         
     }
     
-    private(set) var plugins: [IdentifiedPlugin] = []
-    
-    var name: String = "VM"
-    
-    var id: Int = 0
-    
-    func instantiatePlugin(with pluginName: String) -> Int {
-        guard let pluginType = pluginMap[pluginName] else {
-            fatalError("Unknown plugin name \"\(pluginName)\"")
+    func instantiatePlugin(with specifier: String) -> Plugin {
+        guard let pluginType = try? resolver.resolve(specifier: specifier) else {
+            fatalError("Failed to resolve specifier \(specifier)")
+            // TODO: Мягче
         }
-        let plugin = pluginType.provideInstance(to: id)
-        plugins.append(IdentifiedPlugin(id: id, plugin: plugin))
-        return id
+        
+        // TODO: Проверка зависимостей
+        let plugin = pluginType.provideInstance(for: self, resolvedDependencies: [:])
+        plugins.append(plugin)
+//        let pluginId = Hub.shared.register(plugin: plugin)
+//        plugins.append(plugin: plugin)
+        return plugin
     }
     
-    func execute(closure: @escaping () -> Void) {
-        // TODO: execute
+    func send(message: VM.Value, to plugin: Plugin) -> VM.Value {
+        // TODO: Поддержка корутин, обработка ошибок, возврат значения
+        let pluginPtr = Unmanaged<AnyObject>.passUnretained(plugin).toOpaque()
+        let results = try! state.pcall(
+            globalFunctionName: "__voshod_receive_message",
+            args: [.pointer(pluginPtr), message],
+            numresults: 1
+        )
+        return results.first!
+    }
+}
+
+private extension VM {
+    func prepare(prerunScript: String) -> String {
+        let prefix = """
+        local bundlePath = "\(Bundle.main.bundlePath)"
+        local voshodScriptsPath = "\(Bundle(for: Self.self).bundlePath)/Scripts/"
+        """
+        return prefix + prerunScript
     }
     
-//    subscript (pluginId pluginId: Int) -> Plugin? {
-//        get {
-//            plugins.first(where: { $0.id == pluginId })?.plugin
-//        }
-//    }
-//
-//    public struct Id: Hashable {
-//        var id: Int
-//
-//        init(_ id: Int) {
-//            self.id = id
-//        }
-//
-//        private static var takenIds = Set<Int>()
-//
-//        static func getFreeId() -> Id {
-//            for i in 0...takenIds.count where !takenIds.contains(i) {
-//                return Id(i)
-//            }
-//            fatalError("getFreeId – internal logic error")
-//        }
-//    }
+    func performPrerun() throws {
+        let bundle = Bundle(for: Self.self)
+        let prerunScriptURL = bundle
+            .bundleURL
+            .appendingPathComponent("Scripts")
+            .appendingPathComponent("prerun.lua")
+        let prerunScript = prepare(
+            prerunScript: try String(contentsOf: prerunScriptURL)
+        )
+        try run(script: prerunScript, params: [Value(object: self)])
+        isPrerunCompleted = true
+    }
     
-//    private var plugins: [String: ]
-    
-//    private let pluginTypes: [Plugin.Type]
-    
-    private let state: OpaquePointer
-    
-    private var pluginMap: [String: Plugin.Type] = [:]
-    
-    static var vms: [Id: VM] = [:]
-    
-    private func makePluginMap(pluginTypes: [Plugin.Type]) {
-        pluginTypes.forEach {
-            let name = $0.name
-            if pluginMap[name] != nil {
-                fatalError("💥 Duplicate plugin names: \"\(name)\" for \(pluginMap[name]!) and \($0)")
-            }
-            pluginMap[name] = $0
+    func registerCallbacks() {
+        state.register(function: __voshod_resolve_specifier, name: "__voshod_resolve_specifier")
+        state.register(function: __voshod_create_plugin, name: "__voshod_create_plugin")
+        state.register(function: __voshod_get_installer, name: "__voshod_get_installer")
+        state.register(function: __voshod_send_message, name: "__voshod_send_message")
+    }
+}
+
+public extension VM {
+    enum Error: Swift.Error {
+        case stateInitializationFailure
+        case luaError(String)
+    }
+
+    enum Cancellation {
+        case disabled
+        case enabled(opCount: Int)
+    }
+
+    enum State {
+        case idle
+        case running
+        case cancelling
+    }
+
+    struct Options: OptionSet {
+        public let rawValue: Int
+        
+        public init(rawValue: Int) {
+            self.rawValue = rawValue
         }
+        
+        public static let ffi = Options(rawValue: 1 << 0)
+        public static let jit = Options(rawValue: 1 << 1)
+        public static let coroutines = Options(rawValue: 1 << 2)
+        public static let defaultLibs = Options(rawValue: 1 << 3)
+        public static let debug = Options(rawValue: 1 << 4)
+        public static let os = Options(rawValue: 1 << 5)
+        public static let metatables = Options(rawValue: 1 << 6)
+        public static let load = Options(rawValue: 1 << 7)
+        public static let io = Options(rawValue: 1 << 8)
+        public static let `default`: Options = [
+            .coroutines,
+            .defaultLibs,
+            .metatables
+        ]
     }
-    
-    private func performPrerun() {
-        do {
-            let bundle = Bundle(for: Self.self)
-            let prerunScriptURL = bundle
-                .bundleURL
-                .appendingPathComponent("Scripts")
-                .appendingPathComponent("prerun.lua")
-            let prerunScript = try String(contentsOf: prerunScriptURL)
-            try run(script: prerunScript)
-        } catch {
-            fatalError("💥 Failed to execute prerun script\n\(error)")
-        }
-    }
-}
-
-//public
-
-//fileprivate func createPlugin(_ state: OpaquePointer!) -> Int32 {
-////    lua_isstring(state, 1)
-////    lua_isstring(state, 2)
-//    let vmId = VM.Id(lua_tointegerx(state, 2, nil))
-////    let
-//    let pluginName: String
-////    VM.createPlugin(pluginName)
-//    return 1
-//}
-
-//fileprivate func luaPluginSend(_ state: OpaquePointer!) -> Int32 {
-//    // pluginId, channelId, payload
-//    return 1
-//}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-enum VMState {
-    case idle
-    case running
-    case cancelling
-}
-
-enum VMCancellation {
-    case disabled
-    case enabled(opCount: Int)
-}
-
-struct VMOptions: OptionSet {
-    let rawValue: Int
-    
-    static let ffi = VMOptions(rawValue: 1 << 0)
-    static let jit = VMOptions(rawValue: 1 << 1)
-    static let coroutines = VMOptions(rawValue: 1 << 2)
-    static let defaultLibs = VMOptions(rawValue: 1 << 3)
-    static let debug = VMOptions(rawValue: 1 << 4)
-//    static let  VMOptions(rawValue: 1 << 3)
-}
-
-protocol VMProtocol: AnyObject {
-    init(pluginTypes: [PluginProtocol.Type], aliases: [String: PluginProtocol.Type], options: VMOptions)
-    func run(script: String) throws -> LuaConvertible?
-    func cancel()
-    
-    var state: VMState { get }
-    var cancellation: VMCancellation { get set }
-}
-
-struct VersionPattern {
-    
-}
-
-struct Dependency {
-    var name: String
-    var version: VersionPattern
-}
-
-protocol PluginProtocol {
-    static var dependencies: [Dependency] { get }
-    static var name: String { get }
-    
-    static func provideInstance(vmId: Id) -> PluginProtocol
-    
 }

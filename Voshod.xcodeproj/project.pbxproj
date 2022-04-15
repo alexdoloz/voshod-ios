@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E22B49428088BE900D586C5 /* prerun.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EDE89B62803C251001FA144 /* prerun.lua */; };
+		1E22B496280892A700D586C5 /* Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22B495280892A700D586C5 /* Callbacks.swift */; };
+		1E22B4992808B56200D586C5 /* import.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E22B4982808B55900D586C5 /* import.lua */; };
+		1E22B49A2808B56200D586C5 /* plugin_installer_prerun.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E22B4972808B43800D586C5 /* plugin_installer_prerun.lua */; };
+		1E8EDAA428099ACD00616EB9 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */; };
 		1EDE89992803C045001FA144 /* Voshod.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89982803C045001FA144 /* Voshod.docc */; };
 		1EDE899A2803C045001FA144 /* Voshod.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89972803C045001FA144 /* Voshod.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1EDE89A92803C0CF001FA144 /* lua.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89A22803C0CE001FA144 /* lua.h */; };
@@ -17,13 +22,10 @@
 		1EDE89AE2803C0CF001FA144 /* lauxlib.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89A82803C0CF001FA144 /* lauxlib.h */; };
 		1EDE89B02803C0F3001FA144 /* libluajit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89AF2803C0F3001FA144 /* libluajit.a */; };
 		1EDE89B42803C1C4001FA144 /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89B32803C1C4001FA144 /* VM.swift */; };
-		1EDE89B72803C251001FA144 /* prerun.lua in Resources */ = {isa = PBXBuildFile; fileRef = 1EDE89B62803C251001FA144 /* prerun.lua */; };
 		1EDE89B92803CBE9001FA144 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89B82803CBE9001FA144 /* Plugin.swift */; };
-		1EDE89BB2803D195001FA144 /* Bridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89BA2803D195001FA144 /* Bridge.swift */; };
+		1EDE89BB2803D195001FA144 /* LuaState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89BA2803D195001FA144 /* LuaState.swift */; };
 		1EDE89BD2804575D001FA144 /* VM.Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89BC2804575D001FA144 /* VM.Value.swift */; };
 		1EDE89BF28045C15001FA144 /* LuaConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89BE28045C15001FA144 /* LuaConvertible.swift */; };
-		1EDE89C128049FD9001FA144 /* Limits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89C028049FD9001FA144 /* Limits.swift */; };
-		1EDE89C32804B38E001FA144 /* Hub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89C22804B38E001FA144 /* Hub.swift */; };
 		1EDF48B72805FF820012E0DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48B62805FF820012E0DE /* AppDelegate.swift */; };
 		1EDF48B92805FF820012E0DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48B82805FF820012E0DE /* SceneDelegate.swift */; };
 		1EDF48BB2805FF820012E0DE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48BA2805FF820012E0DE /* ViewController.swift */; };
@@ -33,6 +35,7 @@
 		1EDF48C92805FF960012E0DE /* Voshod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89942803C045001FA144 /* Voshod.framework */; };
 		1EDF48CA2805FF960012E0DE /* Voshod.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89942803C045001FA144 /* Voshod.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1EDF48CF280649110012E0DE /* Id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48CE280649100012E0DE /* Id.swift */; };
+		1EDF48D128083C460012E0DE /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48D028083C460012E0DE /* Versioning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		1E22B49328088BAD00D586C5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Scripts;
+			dstSubfolderSpec = 7;
+			files = (
+				1E22B4992808B56200D586C5 /* import.lua in CopyFiles */,
+				1E22B49A2808B56200D586C5 /* plugin_installer_prerun.lua in CopyFiles */,
+				1E22B49428088BE900D586C5 /* prerun.lua in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1EDF48CD2805FF960012E0DE /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,6 +75,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1E22B495280892A700D586C5 /* Callbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callbacks.swift; sourceTree = "<group>"; };
+		1E22B4972808B43800D586C5 /* plugin_installer_prerun.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = plugin_installer_prerun.lua; sourceTree = "<group>"; };
+		1E22B4982808B55900D586C5 /* import.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = import.lua; sourceTree = "<group>"; };
+		1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolver.swift; sourceTree = "<group>"; };
 		1EDE89942803C045001FA144 /* Voshod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Voshod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EDE89972803C045001FA144 /* Voshod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Voshod.h; sourceTree = "<group>"; };
 		1EDE89982803C045001FA144 /* Voshod.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Voshod.docc; sourceTree = "<group>"; };
@@ -74,11 +93,9 @@
 		1EDE89B32803C1C4001FA144 /* VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM.swift; sourceTree = "<group>"; };
 		1EDE89B62803C251001FA144 /* prerun.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = prerun.lua; sourceTree = "<group>"; };
 		1EDE89B82803CBE9001FA144 /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
-		1EDE89BA2803D195001FA144 /* Bridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bridge.swift; sourceTree = "<group>"; };
+		1EDE89BA2803D195001FA144 /* LuaState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaState.swift; sourceTree = "<group>"; };
 		1EDE89BC2804575D001FA144 /* VM.Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM.Value.swift; sourceTree = "<group>"; };
 		1EDE89BE28045C15001FA144 /* LuaConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaConvertible.swift; sourceTree = "<group>"; };
-		1EDE89C028049FD9001FA144 /* Limits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Limits.swift; sourceTree = "<group>"; };
-		1EDE89C22804B38E001FA144 /* Hub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hub.swift; sourceTree = "<group>"; };
 		1EDF48B42805FF820012E0DE /* VoshodDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoshodDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EDF48B62805FF820012E0DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EDF48B82805FF820012E0DE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +105,7 @@
 		1EDF48C22805FF850012E0DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EDF48C42805FF850012E0DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EDF48CE280649100012E0DE /* Id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Id.swift; sourceTree = "<group>"; };
+		1EDF48D028083C460012E0DE /* Versioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,12 +195,13 @@
 			isa = PBXGroup;
 			children = (
 				1EDE89B32803C1C4001FA144 /* VM.swift */,
+				1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */,
 				1EDE89BC2804575D001FA144 /* VM.Value.swift */,
-				1EDE89BA2803D195001FA144 /* Bridge.swift */,
+				1EDE89BA2803D195001FA144 /* LuaState.swift */,
 				1EDE89BE28045C15001FA144 /* LuaConvertible.swift */,
-				1EDE89C028049FD9001FA144 /* Limits.swift */,
-				1EDE89C22804B38E001FA144 /* Hub.swift */,
 				1EDF48CE280649100012E0DE /* Id.swift */,
+				1EDF48D028083C460012E0DE /* Versioning.swift */,
+				1E22B495280892A700D586C5 /* Callbacks.swift */,
 			);
 			path = VM;
 			sourceTree = "<group>";
@@ -191,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				1EDE89B62803C251001FA144 /* prerun.lua */,
+				1E22B4982808B55900D586C5 /* import.lua */,
+				1E22B4972808B43800D586C5 /* plugin_installer_prerun.lua */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -243,7 +264,7 @@
 				1EDE898F2803C045001FA144 /* Headers */,
 				1EDE89902803C045001FA144 /* Sources */,
 				1EDE89912803C045001FA144 /* Frameworks */,
-				1EDE89922803C045001FA144 /* Resources */,
+				1E22B49328088BAD00D586C5 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -311,14 +332,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1EDE89922803C045001FA144 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1EDE89B72803C251001FA144 /* prerun.lua in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1EDF48B22805FF820012E0DE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -336,13 +349,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EDE89BB2803D195001FA144 /* Bridge.swift in Sources */,
+				1EDE89BB2803D195001FA144 /* LuaState.swift in Sources */,
 				1EDE89B92803CBE9001FA144 /* Plugin.swift in Sources */,
 				1EDF48CF280649110012E0DE /* Id.swift in Sources */,
 				1EDE89BF28045C15001FA144 /* LuaConvertible.swift in Sources */,
-				1EDE89C32804B38E001FA144 /* Hub.swift in Sources */,
-				1EDE89C128049FD9001FA144 /* Limits.swift in Sources */,
+				1E8EDAA428099ACD00616EB9 /* DependencyResolver.swift in Sources */,
+				1EDF48D128083C460012E0DE /* Versioning.swift in Sources */,
 				1EDE89B42803C1C4001FA144 /* VM.swift in Sources */,
+				1E22B496280892A700D586C5 /* Callbacks.swift in Sources */,
 				1EDE89BD2804575D001FA144 /* VM.Value.swift in Sources */,
 				1EDE89992803C045001FA144 /* Voshod.docc in Sources */,
 			);
@@ -520,10 +534,13 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Voshod/luajit/include/";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -537,7 +554,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.voshod.lua.Voshod;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Voshod/luajit/include";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -553,10 +572,14 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Voshod/luajit/include/";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -567,10 +590,13 @@
 					"$(PROJECT_DIR)/Voshod/luajit",
 				);
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.voshod.lua.Voshod;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Voshod/luajit/include";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -584,6 +610,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6PY6P5AXVS;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VoshodDemoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -591,6 +618,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,6 +640,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6PY6P5AXVS;
+				ENABLE_BITCODE = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VoshodDemoApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -619,6 +649,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

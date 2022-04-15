@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias Id = Int
+public typealias Id = Int
 
 enum IdRealm: CustomStringConvertible {
     case plugins, vms
@@ -21,22 +21,24 @@ enum IdRealm: CustomStringConvertible {
 }
 
 struct IdStorage {
-    private var ids = Set<Id>()
+    private var range = 0..<1
+    private var freed = Set<Int>()
     
-    init() {
-        
-    }
-    
-    mutating func claimId() throws -> Id {
-        return 0
+    mutating func claimId() -> Id {
+        if let id = freed.popFirst() {
+            return id
+        }
+        let id = range.upperBound - 1
+        range = range.lowerBound..<(range.upperBound + 1)
+        return id
     }
     
     func isClaimed(id: Id) -> Bool {
-        false
+        return range.contains(id) && !freed.contains(id)
     }
     
     mutating func free(id: Id) {
-        
+        freed.insert(id)
     }
 }
 
