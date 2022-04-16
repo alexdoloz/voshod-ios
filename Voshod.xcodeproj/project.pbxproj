@@ -75,6 +75,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1E14AE012809FDF400A11CC5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1E22B495280892A700D586C5 /* Callbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callbacks.swift; sourceTree = "<group>"; };
 		1E22B4972808B43800D586C5 /* plugin_installer_prerun.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = plugin_installer_prerun.lua; sourceTree = "<group>"; };
 		1E22B4982808B55900D586C5 /* import.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = import.lua; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 		1EDE898A2803C045001FA144 = {
 			isa = PBXGroup;
 			children = (
+				1E14AE012809FDF400A11CC5 /* README.md */,
 				1EDE89962803C045001FA144 /* Voshod */,
 				1EDF48B52805FF820012E0DE /* VoshodDemoApp */,
 				1EDE89952803C045001FA144 /* Products */,
