@@ -6,6 +6,7 @@
 ---     + make some tricky `pcall` swizzling so script cancelling works
 
 vmUD = ...
+Voshod = {}
 print("I'm in prerun script!")
 print(__voshod_resolve_specifier)
 print(vmUD)

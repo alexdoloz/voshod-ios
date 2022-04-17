@@ -16,8 +16,6 @@ import LuaJIT
 public final class VM {
     private let state: LuaState
     
-    private var isPrerunCompleted = false
-    
     private let options: Options
     
     public private(set) var plugins: [Plugin] = []
@@ -46,7 +44,7 @@ public final class VM {
         try performPrerun()
     }
     
-    public func run(script: String, params: [Value] = []) throws {
+    public func run(script: String, params: [LuaSendable] = []) throws {
         try state.loadString(script: script)
         params.forEach { state.put(value: $0) }
         try state.pcall(numberOfArgs: params.count)
@@ -70,15 +68,15 @@ public final class VM {
         return plugin
     }
     
-    func send(message: VM.Value, to plugin: Plugin) -> VM.Value {
+    func send(message: LuaSendable, to plugin: Plugin) throws -> LuaReceivable {
         // TODO: Поддержка корутин, обработка ошибок, возврат значения
         let pluginPtr = Unmanaged<AnyObject>.passUnretained(plugin).toOpaque()
-        let results = try! state.pcall(
+        let results = try state.pcall(
             globalFunctionName: "__voshod_receive_message",
-            args: [.pointer(pluginPtr), message],
-            numresults: 1
+            args: [pluginPtr, message],
+            expectedResults: 1
         )
-        return results.first!
+        return results.first ?? LuaNil.nil
     }
 }
 
@@ -100,8 +98,10 @@ private extension VM {
         let prerunScript = prepare(
             prerunScript: try String(contentsOf: prerunScriptURL)
         )
-        try run(script: prerunScript, params: [Value(object: self)])
-        isPrerunCompleted = true
+        try run(
+            script: prerunScript,
+            params: [Unmanaged<VM>.passUnretained(self).toOpaque()]
+        )
     }
     
     func registerCallbacks() {

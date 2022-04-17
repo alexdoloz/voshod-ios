@@ -14,18 +14,18 @@ class ViewController: UIViewController {
     @IBAction func sendBigArray(_ sender: Any) {
         let plugin = vm?.plugins.first(where: { $0 is MyAwesomePlugin })!
         
-        let currentTime = VM.Value.double(Double(clock()) / Double(CLOCKS_PER_SEC))
-        
-        let sum = plugin?.send(
-            message: .dictionary([
-                "array": array,
-                "time": currentTime
-                ]
-            )
+        let currentTime = Double(clock()) / Double(CLOCKS_PER_SEC)
+        let message: [String: LuaSendable] = [
+            "array": array,
+            "time": currentTime
+        ]
+        let sum = try! plugin?.send(
+            message: message,
+            to: vm!
         )
-        
-        let timeFromScript = Double(sum!.dictionary!["time"]!.toInt()!)
-        let sumValue = Double(sum!.dictionary!["sum"]!.toInt()!)
+        let sumDict = sum as! [String: Int]
+        let timeFromScript = Double(sumDict["time"]!)
+        let sumValue = Double(sumDict["sum"]!)
         
         let currentTime2 = Double(clock()) / Double(CLOCKS_PER_SEC)
         print("Got sum \(sumValue); elapsed time from script \(currentTime2 - timeFromScript)")
@@ -34,19 +34,19 @@ class ViewController: UIViewController {
     @IBAction func sendBigString(_ sender: Any) {
         let plugin = vm?.plugins.first(where: { $0 is MyAwesomePlugin })!
         
-        let currentTime = VM.Value.double(Double(clock()) / Double(CLOCKS_PER_SEC))
+        let currentTime = Double(clock()) / Double(CLOCKS_PER_SEC)
         
-        plugin?.send(
-            message: .dictionary([
-                "string": .string(string),
+        try! plugin?.send(
+            message: [
+                "string": string,
                 "time": currentTime
-                ]
-            )
+            ],
+            to: vm!
         )
     }
     
     let string = (0...10_000_000).map { String($0) }.joined(separator: "|")
-    let array = VM.Value.array((0...10_000_000).map { VM.Value.int($0) })
+    let array = Array(0...10_000_000) as [LuaSendable]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,13 +126,13 @@ class MyAwesomePlugin: Voshod.Plugin {
         return MyAwesomePlugin(vm: vm)
     }
     
-    func receive(message: VM.Value) -> VM.Value {
+    func receive(message: LuaReceivable, from vm: VM) -> LuaSendable {
         switch message {
-        case .string(let string):
+        case let string as String:
             print("Received string from lua \(string)")
         default:
             print("Received message \(message)")
         }
-        return .nil
+        return LuaNil.nil
     }
 }

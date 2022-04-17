@@ -7,11 +7,9 @@
 
 import Foundation
 
-
 public protocol Plugin: AnyObject {
     var installerScript: String { get }
     var dependencies: [String] { get }
-    var vm: VM { get }
     
     static var dependencies: [Dependency] { get }
     static var version: Version { get }
@@ -19,5 +17,12 @@ public protocol Plugin: AnyObject {
     
     static func provideInstance(for vm: VM, resolvedDependencies: [String: Plugin]) -> Plugin
     
-    func receive(message: VM.Value) -> VM.Value
+    func receive(message: LuaReceivable, from vm: VM) -> LuaSendable
+}
+
+public extension Plugin {
+    @discardableResult
+    func send(message: LuaSendable, to vm: VM) throws -> LuaReceivable {
+        return try vm.send(message: message, to: self)
+    }
 }

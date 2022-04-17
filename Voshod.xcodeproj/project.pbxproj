@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E14AE05280B741700A11CC5 /* proxy.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E14AE04280B740A00A11CC5 /* proxy.lua */; };
 		1E22B49428088BE900D586C5 /* prerun.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EDE89B62803C251001FA144 /* prerun.lua */; };
 		1E22B496280892A700D586C5 /* Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22B495280892A700D586C5 /* Callbacks.swift */; };
 		1E22B4992808B56200D586C5 /* import.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E22B4982808B55900D586C5 /* import.lua */; };
 		1E22B49A2808B56200D586C5 /* plugin_installer_prerun.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E22B4972808B43800D586C5 /* plugin_installer_prerun.lua */; };
+		1E2855F2280C8B46001C4F40 /* LuaNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2855F1280C8B46001C4F40 /* LuaNil.swift */; };
 		1E8EDAA428099ACD00616EB9 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */; };
 		1EDE89992803C045001FA144 /* Voshod.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89982803C045001FA144 /* Voshod.docc */; };
 		1EDE899A2803C045001FA144 /* Voshod.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89972803C045001FA144 /* Voshod.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -24,7 +26,6 @@
 		1EDE89B42803C1C4001FA144 /* VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89B32803C1C4001FA144 /* VM.swift */; };
 		1EDE89B92803CBE9001FA144 /* Plugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89B82803CBE9001FA144 /* Plugin.swift */; };
 		1EDE89BB2803D195001FA144 /* LuaState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89BA2803D195001FA144 /* LuaState.swift */; };
-		1EDE89BD2804575D001FA144 /* VM.Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89BC2804575D001FA144 /* VM.Value.swift */; };
 		1EDE89BF28045C15001FA144 /* LuaConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89BE28045C15001FA144 /* LuaConvertible.swift */; };
 		1EDF48B72805FF820012E0DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48B62805FF820012E0DE /* AppDelegate.swift */; };
 		1EDF48B92805FF820012E0DE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48B82805FF820012E0DE /* SceneDelegate.swift */; };
@@ -34,7 +35,6 @@
 		1EDF48C32805FF850012E0DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EDF48C12805FF850012E0DE /* LaunchScreen.storyboard */; };
 		1EDF48C92805FF960012E0DE /* Voshod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89942803C045001FA144 /* Voshod.framework */; };
 		1EDF48CA2805FF960012E0DE /* Voshod.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89942803C045001FA144 /* Voshod.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1EDF48CF280649110012E0DE /* Id.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48CE280649100012E0DE /* Id.swift */; };
 		1EDF48D128083C460012E0DE /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48D028083C460012E0DE /* Versioning.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +55,7 @@
 			dstPath = Scripts;
 			dstSubfolderSpec = 7;
 			files = (
+				1E14AE05280B741700A11CC5 /* proxy.lua in CopyFiles */,
 				1E22B4992808B56200D586C5 /* import.lua in CopyFiles */,
 				1E22B49A2808B56200D586C5 /* plugin_installer_prerun.lua in CopyFiles */,
 				1E22B49428088BE900D586C5 /* prerun.lua in CopyFiles */,
@@ -76,9 +77,12 @@
 
 /* Begin PBXFileReference section */
 		1E14AE012809FDF400A11CC5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1E14AE02280AFEA000A11CC5 /* ArrayProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayProxy.swift; sourceTree = "<group>"; };
+		1E14AE04280B740A00A11CC5 /* proxy.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = proxy.lua; sourceTree = "<group>"; };
 		1E22B495280892A700D586C5 /* Callbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callbacks.swift; sourceTree = "<group>"; };
 		1E22B4972808B43800D586C5 /* plugin_installer_prerun.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = plugin_installer_prerun.lua; sourceTree = "<group>"; };
 		1E22B4982808B55900D586C5 /* import.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = import.lua; sourceTree = "<group>"; };
+		1E2855F1280C8B46001C4F40 /* LuaNil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaNil.swift; sourceTree = "<group>"; };
 		1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolver.swift; sourceTree = "<group>"; };
 		1EDE89942803C045001FA144 /* Voshod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Voshod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EDE89972803C045001FA144 /* Voshod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Voshod.h; sourceTree = "<group>"; };
@@ -201,9 +205,11 @@
 				1EDE89BC2804575D001FA144 /* VM.Value.swift */,
 				1EDE89BA2803D195001FA144 /* LuaState.swift */,
 				1EDE89BE28045C15001FA144 /* LuaConvertible.swift */,
+				1E2855F1280C8B46001C4F40 /* LuaNil.swift */,
 				1EDF48CE280649100012E0DE /* Id.swift */,
 				1EDF48D028083C460012E0DE /* Versioning.swift */,
 				1E22B495280892A700D586C5 /* Callbacks.swift */,
+				1E14AE02280AFEA000A11CC5 /* ArrayProxy.swift */,
 			);
 			path = VM;
 			sourceTree = "<group>";
@@ -212,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				1EDE89B62803C251001FA144 /* prerun.lua */,
+				1E14AE04280B740A00A11CC5 /* proxy.lua */,
 				1E22B4982808B55900D586C5 /* import.lua */,
 				1E22B4972808B43800D586C5 /* plugin_installer_prerun.lua */,
 			);
@@ -353,13 +360,12 @@
 			files = (
 				1EDE89BB2803D195001FA144 /* LuaState.swift in Sources */,
 				1EDE89B92803CBE9001FA144 /* Plugin.swift in Sources */,
-				1EDF48CF280649110012E0DE /* Id.swift in Sources */,
 				1EDE89BF28045C15001FA144 /* LuaConvertible.swift in Sources */,
+				1E2855F2280C8B46001C4F40 /* LuaNil.swift in Sources */,
 				1E8EDAA428099ACD00616EB9 /* DependencyResolver.swift in Sources */,
 				1EDF48D128083C460012E0DE /* Versioning.swift in Sources */,
 				1EDE89B42803C1C4001FA144 /* VM.swift in Sources */,
 				1E22B496280892A700D586C5 /* Callbacks.swift in Sources */,
-				1EDE89BD2804575D001FA144 /* VM.Value.swift in Sources */,
 				1EDE89992803C045001FA144 /* Voshod.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

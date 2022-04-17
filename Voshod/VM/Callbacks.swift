@@ -52,22 +52,21 @@ func __voshod_get_installer(_ state: OpaquePointer!) -> Int32 {
 }
 
 func __voshod_send_message(_ state: OpaquePointer!) -> Int32 {
-    let pluginUD = lua_touserdata(state, 1)!
-    let plugin = Unmanaged<AnyObject>.fromOpaque(pluginUD).takeUnretainedValue() as! Plugin
+    guard
+        let pluginPtr = lua_touserdata(state, 1),
+        let vmPtr = lua_touserdata(state, 2)
+    else {
+        fatalError("Wrong parameters to \(#function): expected <pluginUD> <vmUD> <message>")
+    }
+    let plugin = Unmanaged<AnyObject>.fromOpaque(pluginPtr).takeUnretainedValue() as! Plugin
+    let vm = Unmanaged<AnyObject>.fromOpaque(vmPtr).takeUnretainedValue() as! VM
     let st = LuaState(state: state)
     do {
         let value = try st.take()
-        let response = plugin.receive(message: value)
+        let response = plugin.receive(message: value, from: vm)
         st.put(value: response)
     } catch {
         fatalError("Error sending message Lua -> Native: \(error)")
     }
     return 1
-}
-
-public extension Plugin {
-    @discardableResult
-    func send(message: VM.Value) -> VM.Value {
-        return vm.send(message: message, to: self) 
-    }
 }

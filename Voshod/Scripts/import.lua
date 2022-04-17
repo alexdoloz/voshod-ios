@@ -39,7 +39,7 @@ local function import_string(specifier, environment)
     pluginMT.__index = pluginMT
 
     function pluginMT:send(message)
-        return __voshod_send_message(pluginUD, message)
+        return __voshod_send_message(pluginUD, vmUD, message)
     end
 
     function pluginMT:receive(message)

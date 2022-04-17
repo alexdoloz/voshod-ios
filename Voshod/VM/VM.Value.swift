@@ -9,7 +9,7 @@ import Foundation
 import LuaJIT
 
 extension VM {
-    public enum Value: Equatable {
+    public enum Value {
         case `nil`
         case int(Int)
         case double(Double)
