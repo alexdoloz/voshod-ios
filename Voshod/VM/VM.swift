@@ -8,11 +8,6 @@
 import Foundation
 import LuaJIT
 
-//struct IdentifiedPlugin {
-//    var id: Id
-//    var plugin: Plugin
-//}
-
 public final class VM {
     private let state: LuaState
     

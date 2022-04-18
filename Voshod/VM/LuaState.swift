@@ -76,6 +76,7 @@ struct LuaState {
     }
 
     func take() throws -> LuaReceivable {
+        lua_checkstack(state, 3)
         let valueType = lua_type(state, -1)
         defer {
             pop()

@@ -11,15 +11,33 @@ import Voshod
 class ViewController: UIViewController {
     var vm: VM?
     
+    var plugin: Plugin {
+        vm!.plugins.first(where: { $0 is MyAwesomePlugin })!
+    }
+    
+    @IBAction func sendNestedValues(_ sender: Any) {
+        let message: [String: LuaSendable] = [
+            "a": "b",
+            "c": 100,
+            "d": LuaNil.nil,
+            "e": ["a", "b", "c", 100],
+            "f": ["a" : "b", "c" : "d"]
+        ]
+        let response = try! plugin.send(message: message, to: vm!)
+        let dict = response as! [String: String]
+        print(dict)
+    }
+    
+    
     @IBAction func sendBigArray(_ sender: Any) {
-        let plugin = vm?.plugins.first(where: { $0 is MyAwesomePlugin })!
+        
         
         let currentTime = Double(clock()) / Double(CLOCKS_PER_SEC)
         let message: [String: LuaSendable] = [
             "array": array,
             "time": currentTime
         ]
-        let sum = try! plugin?.send(
+        let sum = try! plugin.send(
             message: message,
             to: vm!
         )
@@ -32,11 +50,9 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendBigString(_ sender: Any) {
-        let plugin = vm?.plugins.first(where: { $0 is MyAwesomePlugin })!
-        
         let currentTime = Double(clock()) / Double(CLOCKS_PER_SEC)
         
-        try! plugin?.send(
+        try! plugin.send(
             message: [
                 "string": string,
                 "time": currentTime
@@ -45,12 +61,22 @@ class ViewController: UIViewController {
         )
     }
     
-    let string = (0...10_000_000).map { String($0) }.joined(separator: "|")
-    let array = Array(0...10_000_000) as [LuaSendable]
+    @IBAction func startTimer(_ sender: Any) {
+        try! vm!.run(script: """
+        import "Timer 0.1.0"
+        local timer = Timer()
+        timer:start(3.0, function ()
+            print("Tick")
+        end)
+        """)
+    }
+    
+    let string = (0...100).map { String($0) }.joined(separator: "|")
+    let array = Array(0...100) as [LuaSendable]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let vm = try! VM(pluginTypes: [MyAwesomePlugin.self])
+        let vm = try! VM(pluginTypes: [MyAwesomePlugin.self, TimerPlugin.self])
         print(vm)
         self.vm = vm
         try! vm.run(script: """
@@ -81,21 +107,12 @@ class MyAwesomePlugin: Voshod.Plugin {
         local receivedCount = 0
         
         function plugin:receive(message)
-            receivedCount = receivedCount + 1
-            --print("Received", message)
-            local start = message.time
-            local now = os.clock()
-            print("Elapsed ", now - start)
-            local array = message.array
-            if not array then return end
-            local sum = 0
-            for i = 1, #array do
-                sum = sum + array[i]
+            if message.a then
+                for k, v in pairs(message) do
+                    print(k, v)
+                end
             end
-            return {
-                sum = sum,
-                time = now
-            }
+            return { x = "qwerty" }
         end
         
         local MyAwesome = {}
@@ -134,5 +151,97 @@ class MyAwesomePlugin: Voshod.Plugin {
             print("Received message \(message)")
         }
         return LuaNil.nil
+    }
+}
+
+final class TimerPlugin: Plugin {
+    var installerScript: String {
+        """
+        local plugin, environment = ...
+        
+        function plugin:receive(message)
+            if currentTimer then
+                currentTimer.callback()
+            end
+        end
+        
+        currentTimer = nil
+        
+        function Timer()
+            if currentTimer then return currentTimer end
+        
+            local timer = {}
+            local timerMT = {
+                __newindex = function () end,
+                __gc = function (self)
+                    self:stop()
+                end
+            }
+            timerMT.__index = timerMT
+        
+            function timerMT:start(timeInterval, callback)
+                timerMT.callback = callback
+                timerMT.timeInterval = timeInterval
+                plugin:send(timeInterval)
+            end
+            
+            function timerMT:stop()
+                plugin:send("stop")
+                currentTimer = nil
+            end
+            
+            setmetatable(timer, timerMT)
+            currentTimer = timer
+            return timer
+        end
+        
+        environment.Timer = Timer
+        """
+    }
+    
+    var dependencies: [String] = []
+    
+    unowned var vm: VM
+    
+    static var dependencies: [Dependency] = []
+    
+    static var version: Version = Version(string: "0.1.0")
+    
+    static var name: String { "Timer" }
+    
+    init(vm: VM) {
+        self.vm = vm
+    }
+    
+    static func provideInstance(for vm: VM, resolvedDependencies: [String : Plugin]) -> Plugin {
+        return TimerPlugin(vm: vm)
+    }
+    
+    func receive(message: LuaReceivable, from vm: VM) -> LuaSendable {
+        switch message {
+        case let string as String where string == "stop":
+            stopTimer()
+        case let double as Double:
+            startTimer(interval: double)
+        case let int as Int:
+            startTimer(interval: Double(int))
+        default:
+            break
+        }
+        return LuaNil.nil
+    }
+    
+    private var timer: Timer?
+    
+    private func startTimer(interval: TimeInterval) {
+        guard timer == nil else { return }
+        timer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) { [unowned self] _ in
+            try! self.send(message: "tick", to: self.vm)
+        }
+    }
+    
+    private func stopTimer() {
+        timer?.invalidate()
+        timer = nil
     }
 }

@@ -12,7 +12,6 @@ public protocol LuaSendable {
     func put(to state: OpaquePointer)
 }
 
-
 public protocol LuaReceivable {}
 
 public typealias LuaConvertible = LuaSendable & LuaReceivable

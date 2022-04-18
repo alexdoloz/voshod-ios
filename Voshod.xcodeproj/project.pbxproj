@@ -11,8 +11,13 @@
 		1E22B49428088BE900D586C5 /* prerun.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1EDE89B62803C251001FA144 /* prerun.lua */; };
 		1E22B496280892A700D586C5 /* Callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E22B495280892A700D586C5 /* Callbacks.swift */; };
 		1E22B4992808B56200D586C5 /* import.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E22B4982808B55900D586C5 /* import.lua */; };
-		1E22B49A2808B56200D586C5 /* plugin_installer_prerun.lua in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1E22B4972808B43800D586C5 /* plugin_installer_prerun.lua */; };
 		1E2855F2280C8B46001C4F40 /* LuaNil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2855F1280C8B46001C4F40 /* LuaNil.swift */; };
+		1E2A59AE280D0E000045B8F5 /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A59AD280D0E000045B8F5 /* Version.swift */; };
+		1E2A59B0280D0E220045B8F5 /* VersionPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A59AF280D0E220045B8F5 /* VersionPattern.swift */; };
+		1E2A59B2280D0E5F0045B8F5 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A59B1280D0E5F0045B8F5 /* Dependency.swift */; };
+		1E2A59BB280DC5F10045B8F5 /* Voshod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89942803C045001FA144 /* Voshod.framework */; platformFilter = ios; };
+		1E2A59C2280DD29F0045B8F5 /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A59C1280DD29F0045B8F5 /* VersionTests.swift */; };
+		1E2A59C4280DD2AD0045B8F5 /* VersionPatternTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A59C3280DD2AD0045B8F5 /* VersionPatternTests.swift */; };
 		1E8EDAA428099ACD00616EB9 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */; };
 		1EDE89992803C045001FA144 /* Voshod.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89982803C045001FA144 /* Voshod.docc */; };
 		1EDE899A2803C045001FA144 /* Voshod.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89972803C045001FA144 /* Voshod.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,10 +40,16 @@
 		1EDF48C32805FF850012E0DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1EDF48C12805FF850012E0DE /* LaunchScreen.storyboard */; };
 		1EDF48C92805FF960012E0DE /* Voshod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89942803C045001FA144 /* Voshod.framework */; };
 		1EDF48CA2805FF960012E0DE /* Voshod.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89942803C045001FA144 /* Voshod.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1EDF48D128083C460012E0DE /* Versioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EDF48D028083C460012E0DE /* Versioning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		1E2A59BC280DC5F10045B8F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1EDE898B2803C045001FA144 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EDE89932803C045001FA144;
+			remoteInfo = Voshod;
+		};
 		1EDF48CB2805FF960012E0DE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1EDE898B2803C045001FA144 /* Project object */;
@@ -57,7 +68,6 @@
 			files = (
 				1E14AE05280B741700A11CC5 /* proxy.lua in CopyFiles */,
 				1E22B4992808B56200D586C5 /* import.lua in CopyFiles */,
-				1E22B49A2808B56200D586C5 /* plugin_installer_prerun.lua in CopyFiles */,
 				1E22B49428088BE900D586C5 /* prerun.lua in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,12 +87,16 @@
 
 /* Begin PBXFileReference section */
 		1E14AE012809FDF400A11CC5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		1E14AE02280AFEA000A11CC5 /* ArrayProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayProxy.swift; sourceTree = "<group>"; };
 		1E14AE04280B740A00A11CC5 /* proxy.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = proxy.lua; sourceTree = "<group>"; };
 		1E22B495280892A700D586C5 /* Callbacks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Callbacks.swift; sourceTree = "<group>"; };
-		1E22B4972808B43800D586C5 /* plugin_installer_prerun.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = plugin_installer_prerun.lua; sourceTree = "<group>"; };
 		1E22B4982808B55900D586C5 /* import.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = import.lua; sourceTree = "<group>"; };
 		1E2855F1280C8B46001C4F40 /* LuaNil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaNil.swift; sourceTree = "<group>"; };
+		1E2A59AD280D0E000045B8F5 /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		1E2A59AF280D0E220045B8F5 /* VersionPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionPattern.swift; sourceTree = "<group>"; };
+		1E2A59B1280D0E5F0045B8F5 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
+		1E2A59B7280DC5F10045B8F5 /* VoshodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoshodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E2A59C1280DD29F0045B8F5 /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
+		1E2A59C3280DD2AD0045B8F5 /* VersionPatternTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionPatternTests.swift; sourceTree = "<group>"; };
 		1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolver.swift; sourceTree = "<group>"; };
 		1EDE89942803C045001FA144 /* Voshod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Voshod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EDE89972803C045001FA144 /* Voshod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Voshod.h; sourceTree = "<group>"; };
@@ -99,7 +113,6 @@
 		1EDE89B62803C251001FA144 /* prerun.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = prerun.lua; sourceTree = "<group>"; };
 		1EDE89B82803CBE9001FA144 /* Plugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plugin.swift; sourceTree = "<group>"; };
 		1EDE89BA2803D195001FA144 /* LuaState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaState.swift; sourceTree = "<group>"; };
-		1EDE89BC2804575D001FA144 /* VM.Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VM.Value.swift; sourceTree = "<group>"; };
 		1EDE89BE28045C15001FA144 /* LuaConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuaConvertible.swift; sourceTree = "<group>"; };
 		1EDF48B42805FF820012E0DE /* VoshodDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoshodDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EDF48B62805FF820012E0DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,11 +122,17 @@
 		1EDF48BF2805FF850012E0DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1EDF48C22805FF850012E0DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1EDF48C42805FF850012E0DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1EDF48CE280649100012E0DE /* Id.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Id.swift; sourceTree = "<group>"; };
-		1EDF48D028083C460012E0DE /* Versioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Versioning.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1E2A59B4280DC5F10045B8F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E2A59BB280DC5F10045B8F5 /* Voshod.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1EDE89912803C045001FA144 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,11 +152,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E2A59B8280DC5F10045B8F5 /* VoshodTests */ = {
+			isa = PBXGroup;
+			children = (
+				1E2A59C1280DD29F0045B8F5 /* VersionTests.swift */,
+				1E2A59C3280DD2AD0045B8F5 /* VersionPatternTests.swift */,
+			);
+			path = VoshodTests;
+			sourceTree = "<group>";
+		};
 		1EDE898A2803C045001FA144 = {
 			isa = PBXGroup;
 			children = (
 				1E14AE012809FDF400A11CC5 /* README.md */,
 				1EDE89962803C045001FA144 /* Voshod */,
+				1E2A59B8280DC5F10045B8F5 /* VoshodTests */,
 				1EDF48B52805FF820012E0DE /* VoshodDemoApp */,
 				1EDE89952803C045001FA144 /* Products */,
 				1EDF48C82805FF960012E0DE /* Frameworks */,
@@ -149,6 +178,7 @@
 			children = (
 				1EDE89942803C045001FA144 /* Voshod.framework */,
 				1EDF48B42805FF820012E0DE /* VoshodDemoApp.app */,
+				1E2A59B7280DC5F10045B8F5 /* VoshodTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -193,6 +223,9 @@
 			isa = PBXGroup;
 			children = (
 				1EDE89B82803CBE9001FA144 /* Plugin.swift */,
+				1E2A59AF280D0E220045B8F5 /* VersionPattern.swift */,
+				1E2A59AD280D0E000045B8F5 /* Version.swift */,
+				1E2A59B1280D0E5F0045B8F5 /* Dependency.swift */,
 			);
 			path = PluginSupport;
 			sourceTree = "<group>";
@@ -202,14 +235,10 @@
 			children = (
 				1EDE89B32803C1C4001FA144 /* VM.swift */,
 				1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */,
-				1EDE89BC2804575D001FA144 /* VM.Value.swift */,
 				1EDE89BA2803D195001FA144 /* LuaState.swift */,
 				1EDE89BE28045C15001FA144 /* LuaConvertible.swift */,
 				1E2855F1280C8B46001C4F40 /* LuaNil.swift */,
-				1EDF48CE280649100012E0DE /* Id.swift */,
-				1EDF48D028083C460012E0DE /* Versioning.swift */,
 				1E22B495280892A700D586C5 /* Callbacks.swift */,
-				1E14AE02280AFEA000A11CC5 /* ArrayProxy.swift */,
 			);
 			path = VM;
 			sourceTree = "<group>";
@@ -220,7 +249,6 @@
 				1EDE89B62803C251001FA144 /* prerun.lua */,
 				1E14AE04280B740A00A11CC5 /* proxy.lua */,
 				1E22B4982808B55900D586C5 /* import.lua */,
-				1E22B4972808B43800D586C5 /* plugin_installer_prerun.lua */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
@@ -266,6 +294,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1E2A59B6280DC5F10045B8F5 /* VoshodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E2A59BE280DC5F10045B8F5 /* Build configuration list for PBXNativeTarget "VoshodTests" */;
+			buildPhases = (
+				1E2A59B3280DC5F10045B8F5 /* Sources */,
+				1E2A59B4280DC5F10045B8F5 /* Frameworks */,
+				1E2A59B5280DC5F10045B8F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1E2A59BD280DC5F10045B8F5 /* PBXTargetDependency */,
+			);
+			name = VoshodTests;
+			productName = VoshodTests;
+			productReference = 1E2A59B7280DC5F10045B8F5 /* VoshodTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		1EDE89932803C045001FA144 /* Voshod */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1EDE899D2803C045001FA144 /* Build configuration list for PBXNativeTarget "Voshod" */;
@@ -313,6 +359,9 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					1E2A59B6280DC5F10045B8F5 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
 					1EDE89932803C045001FA144 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -336,11 +385,19 @@
 			targets = (
 				1EDE89932803C045001FA144 /* Voshod */,
 				1EDF48B32805FF820012E0DE /* VoshodDemoApp */,
+				1E2A59B6280DC5F10045B8F5 /* VoshodTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1E2A59B5280DC5F10045B8F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1EDF48B22805FF820012E0DE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -354,6 +411,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1E2A59B3280DC5F10045B8F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E2A59C4280DD2AD0045B8F5 /* VersionPatternTests.swift in Sources */,
+				1E2A59C2280DD29F0045B8F5 /* VersionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1EDE89902803C045001FA144 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -361,9 +427,11 @@
 				1EDE89BB2803D195001FA144 /* LuaState.swift in Sources */,
 				1EDE89B92803CBE9001FA144 /* Plugin.swift in Sources */,
 				1EDE89BF28045C15001FA144 /* LuaConvertible.swift in Sources */,
+				1E2A59B0280D0E220045B8F5 /* VersionPattern.swift in Sources */,
 				1E2855F2280C8B46001C4F40 /* LuaNil.swift in Sources */,
 				1E8EDAA428099ACD00616EB9 /* DependencyResolver.swift in Sources */,
-				1EDF48D128083C460012E0DE /* Versioning.swift in Sources */,
+				1E2A59B2280D0E5F0045B8F5 /* Dependency.swift in Sources */,
+				1E2A59AE280D0E000045B8F5 /* Version.swift in Sources */,
 				1EDE89B42803C1C4001FA144 /* VM.swift in Sources */,
 				1E22B496280892A700D586C5 /* Callbacks.swift in Sources */,
 				1EDE89992803C045001FA144 /* Voshod.docc in Sources */,
@@ -383,6 +451,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		1E2A59BD280DC5F10045B8F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 1EDE89932803C045001FA144 /* Voshod */;
+			targetProxy = 1E2A59BC280DC5F10045B8F5 /* PBXContainerItemProxy */;
+		};
 		1EDF48CC2805FF960012E0DE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1EDE89932803C045001FA144 /* Voshod */;
@@ -410,6 +484,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1E2A59BF280DC5F10045B8F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6PY6P5AXVS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.voshod.lua.VoshodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1E2A59C0280DC5F10045B8F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6PY6P5AXVS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.voshod.lua.VoshodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		1EDE899B2803C045001FA144 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -674,6 +780,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1E2A59BE280DC5F10045B8F5 /* Build configuration list for PBXNativeTarget "VoshodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E2A59BF280DC5F10045B8F5 /* Debug */,
+				1E2A59C0280DC5F10045B8F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1EDE898E2803C045001FA144 /* Build configuration list for PBXProject "Voshod" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
