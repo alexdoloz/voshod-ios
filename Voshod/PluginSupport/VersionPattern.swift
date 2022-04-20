@@ -7,30 +7,7 @@
 
 import Foundation
 
-// 2.2.2
-// 2.x
-// 2
-// 2.5<9
-// 2.1.<100
-// 2.5<
-// 2.5+
-// 2.<5
-// 2.5-
-// 1<5
-// 1<5;6.0.1
-
-//private 
-
 public struct VersionPattern {
-//    enum Kind {
-//        case range(range: ClosedRange<Version>)
-//        case majorRange(range: ClosedRange<UInt>)
-//        case minorRange(major: UInt, range: ClosedRange<UInt>)
-//        case patchRange(major: UInt, minor: UInt, range: ClosedRange<UInt>)
-//    }
-//
-//    private let kind: Kind
-    
     private let range: ClosedRange<Version>
     
     private static func parse(part: String) -> ClosedRange<UInt>? {
@@ -54,13 +31,13 @@ public struct VersionPattern {
             guard let lower = UInt(splitted[0]) else { return nil }
             return lower...UInt.max
         }
-        guard let lower = UInt(splitted[0]), let upper = UInt(splitted[1]) else {
+        guard let lower = UInt(splitted[0]), let upper = UInt(splitted[1]), lower <= upper else {
             return nil
         }
         return lower...upper
     }
     
-    public init?(string: String) {
+    public init?(_ string: String) {
         // range of 2 versions
         if string.contains(":") && !string.contains("[") {
             let parts = string.split(separator: ":", omittingEmptySubsequences: false)
@@ -114,6 +91,8 @@ public struct VersionPattern {
         return range.contains(version)
     }
 }
+
+extension VersionPattern: Hashable {}
 
 private extension Array {
     func safeValue(at index: Int, default: Element) -> Element {

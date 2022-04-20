@@ -8,7 +8,6 @@
 import Foundation
 
 public struct Dependency {
-    public let name: String
-    public let version: VersionPattern
+    public let specifierPattern: SpecifierPattern
     public let isRequired: Bool
 }

@@ -135,7 +135,7 @@ class MyAwesomePlugin: Voshod.Plugin {
     
     static var dependencies: [Dependency] = []
     
-    static var version: Version = Version(string: "1.1.0")
+    static var version: Version = Version("1.1.0")!
     
     static var name: String = "MyAwesomePlugin"
     
@@ -205,7 +205,7 @@ final class TimerPlugin: Plugin {
     
     static var dependencies: [Dependency] = []
     
-    static var version: Version = Version(string: "0.1.0")
+    static var version: Version = Version("0.1.0")!
     
     static var name: String { "Timer" }
     

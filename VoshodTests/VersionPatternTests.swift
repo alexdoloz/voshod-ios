@@ -63,8 +63,8 @@ final class VersionPatternTests: XCTestCase {
     let invalidPatterns = [
         "",
         "some string",
-        "1<2.3",
-        "1.2<3.4",
+        "[1:2].3",
+        "1.[2:3].4",
         "1+5",
         "4+ ",
         "1.y",
@@ -73,13 +73,14 @@ final class VersionPatternTests: XCTestCase {
         "1.-1.5",
         "-1",
         "4.4.-2",
-        "10<4",
-        "1. 4.5"
+        "[10:4]",
+        "1. 4.5",
+        "2.0.0:3.0.0:4.0.0"
     ]
     
     func testInvalidPatterns() {
         invalidPatterns.forEach {
-            XCTAssertNil(VersionPattern(string: $0), "Pattern for \($0) must be nil")
+            XCTAssertNil(VersionPattern($0), "Pattern for \($0) must be nil")
         }
     }
     
@@ -88,7 +89,7 @@ final class VersionPatternTests: XCTestCase {
             let patternString = validPatterns[i]
             let matches = matchesForValidPatterns[i]
             let nonMatches = nonMatchesForValidPatterns[i]
-            let pattern = VersionPattern(string: patternString)!
+            let pattern = VersionPattern(patternString)!
             matches.forEach {
                 XCTAssertTrue(pattern.matches(version: Version($0)!), "Pattern \(patternString) must match \($0)")
             }

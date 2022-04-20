@@ -19,10 +19,10 @@ local function copyTable(fromTable, toTable)
     end
 end
 
-local function import_string(specifier, environment)
-    local name, version = __voshod_resolve_specifier(vmUD, specifier)
-    print("NV", name, version)
-    local cachedEnvironment = pluginsEnvironmentCache[name .. version]
+local function import_string(specifierPattern, environment)
+    local specifier = Voshod.resolveSpecifierPattern(vmUD, specifierPattern)
+    print(string.format("Specifier from %s - %s", specifierPattern, specifier))
+    local cachedEnvironment = pluginsEnvironmentCache[specifier]
     if cachedEnvironment then
         copyTable(cachedEnvironment, environment)
         return
@@ -72,7 +72,7 @@ local function import(a, environment)
     if t ~= "string" and t ~= "table" then
         error([[
         Can't import \"" .. tostring(a) .. "\"; pass either string 
-        with plugin specifier (e.g. 'JSON 0.1.x') or table of plugin specifiers
+        with plugin specifier pattern (e.g. 'JSON 0.1+') or table of these patterns
         ]]
     )
     end

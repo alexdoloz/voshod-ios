@@ -52,3 +52,5 @@ extension Version: Comparable {
         return false
     }
 }
+
+extension Version: Hashable {}

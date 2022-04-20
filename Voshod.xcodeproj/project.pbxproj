@@ -18,6 +18,9 @@
 		1E2A59BB280DC5F10045B8F5 /* Voshod.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EDE89942803C045001FA144 /* Voshod.framework */; platformFilter = ios; };
 		1E2A59C2280DD29F0045B8F5 /* VersionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A59C1280DD29F0045B8F5 /* VersionTests.swift */; };
 		1E2A59C4280DD2AD0045B8F5 /* VersionPatternTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A59C3280DD2AD0045B8F5 /* VersionPatternTests.swift */; };
+		1E2A59C6280F5F010045B8F5 /* Specifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A59C5280F5F010045B8F5 /* Specifier.swift */; };
+		1E2A59C8280F5F0C0045B8F5 /* SpecifierPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A59C7280F5F0C0045B8F5 /* SpecifierPattern.swift */; };
+		1E2A59CA281046520045B8F5 /* DependencyTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2A59C9281046520045B8F5 /* DependencyTree.swift */; };
 		1E8EDAA428099ACD00616EB9 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */; };
 		1EDE89992803C045001FA144 /* Voshod.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1EDE89982803C045001FA144 /* Voshod.docc */; };
 		1EDE899A2803C045001FA144 /* Voshod.h in Headers */ = {isa = PBXBuildFile; fileRef = 1EDE89972803C045001FA144 /* Voshod.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -97,6 +100,9 @@
 		1E2A59B7280DC5F10045B8F5 /* VoshodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoshodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E2A59C1280DD29F0045B8F5 /* VersionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionTests.swift; sourceTree = "<group>"; };
 		1E2A59C3280DD2AD0045B8F5 /* VersionPatternTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionPatternTests.swift; sourceTree = "<group>"; };
+		1E2A59C5280F5F010045B8F5 /* Specifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specifier.swift; sourceTree = "<group>"; };
+		1E2A59C7280F5F0C0045B8F5 /* SpecifierPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifierPattern.swift; sourceTree = "<group>"; };
+		1E2A59C9281046520045B8F5 /* DependencyTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyTree.swift; sourceTree = "<group>"; };
 		1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolver.swift; sourceTree = "<group>"; };
 		1EDE89942803C045001FA144 /* Voshod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Voshod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EDE89972803C045001FA144 /* Voshod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Voshod.h; sourceTree = "<group>"; };
@@ -226,6 +232,10 @@
 				1E2A59AF280D0E220045B8F5 /* VersionPattern.swift */,
 				1E2A59AD280D0E000045B8F5 /* Version.swift */,
 				1E2A59B1280D0E5F0045B8F5 /* Dependency.swift */,
+				1E2A59C9281046520045B8F5 /* DependencyTree.swift */,
+				1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */,
+				1E2A59C5280F5F010045B8F5 /* Specifier.swift */,
+				1E2A59C7280F5F0C0045B8F5 /* SpecifierPattern.swift */,
 			);
 			path = PluginSupport;
 			sourceTree = "<group>";
@@ -234,7 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				1EDE89B32803C1C4001FA144 /* VM.swift */,
-				1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */,
 				1EDE89BA2803D195001FA144 /* LuaState.swift */,
 				1EDE89BE28045C15001FA144 /* LuaConvertible.swift */,
 				1E2855F1280C8B46001C4F40 /* LuaNil.swift */,
@@ -424,6 +433,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E2A59CA281046520045B8F5 /* DependencyTree.swift in Sources */,
 				1EDE89BB2803D195001FA144 /* LuaState.swift in Sources */,
 				1EDE89B92803CBE9001FA144 /* Plugin.swift in Sources */,
 				1EDE89BF28045C15001FA144 /* LuaConvertible.swift in Sources */,
@@ -432,7 +442,9 @@
 				1E8EDAA428099ACD00616EB9 /* DependencyResolver.swift in Sources */,
 				1E2A59B2280D0E5F0045B8F5 /* Dependency.swift in Sources */,
 				1E2A59AE280D0E000045B8F5 /* Version.swift in Sources */,
+				1E2A59C6280F5F010045B8F5 /* Specifier.swift in Sources */,
 				1EDE89B42803C1C4001FA144 /* VM.swift in Sources */,
+				1E2A59C8280F5F0C0045B8F5 /* SpecifierPattern.swift in Sources */,
 				1E22B496280892A700D586C5 /* Callbacks.swift in Sources */,
 				1EDE89992803C045001FA144 /* Voshod.docc in Sources */,
 			);

@@ -15,8 +15,6 @@ public final class VM {
     
     public private(set) var plugins: [Plugin] = []
     
-    private(set) var id: Int = 0
-    
     private let resolver: DependencyResolver
     
     public init(
@@ -49,17 +47,65 @@ public final class VM {
         
     }
     
-    func instantiatePlugin(with specifier: String) -> Plugin {
-        guard let pluginType = try? resolver.resolve(specifier: specifier) else {
-            fatalError("Failed to resolve specifier \(specifier)")
-            // TODO: Мягче
+    private var instantiatedPlugins = [Specifier: Plugin]()
+
+    private func instantiate(dependencyTree: DependencyTree) -> Plugin {
+        switch dependencyTree {
+        case .leaf(let specifier):
+            if instantiatedPlugins[specifier] == nil {
+                let pluginType = resolver[specifier]
+                let plugin = pluginType.provideInstance(for: self, resolvedDependencies: [])
+                instantiatedPlugins[specifier] = plugin
+            }
+        case .node(let specifier, let dependencies):
+            if instantiatedPlugins[specifier] == nil {
+                let specifiedPlugins = dependencies.map {
+                    instantiate(dependencyTree: $0)
+                }
+                
+                let pluginType = resolver[specifier]
+                let plugin = pluginType.provideInstance(
+                    for: self,
+                    resolvedDependencies: specifiedPlugins
+                )
+                instantiatedPlugins[specifier] = plugin
+            }
         }
+    }
+    
+    func instantiatePlugin(with specifierPattern: SpecifierPattern) -> [(Specifier, Plugin)] {
+        do {
+            let dependencyTree = try resolver.resolve(specifierPattern: specifierPattern)
+            
+            for i in specifiers.indices {
+                let specifier = specifiers[i]
+                let pluginType = resolver[specifier]
+                var resolvedDeps = [Specifier: Plugin]()
+                for 
+                for j in 0..<(i-1) {
+                    
+                }
+            }
+            specifiers.forEach {
+                
+                = pluginType.dependencies.compactMap {
+                    instantiatedPlugins[
+                    ($0, $0.specifierPattern)
+                }
+                pluginType.provideInstance(for: self, resolvedDependencies: )
+            }
+        } catch {
+//            state.put(value: "")
+        }
+        
+//        guard let pluginType = try? resolver.resolve(specifier: specifier).first else {
+//            fatalError("Failed to resolve specifier \(specifier)")
+//            // TODO: Мягче
+//        }
         
         // TODO: Проверка зависимостей
         let plugin = pluginType.provideInstance(for: self, resolvedDependencies: [:])
         plugins.append(plugin)
-//        let pluginId = Hub.shared.register(plugin: plugin)
-//        plugins.append(plugin: plugin)
         return plugin
     }
     

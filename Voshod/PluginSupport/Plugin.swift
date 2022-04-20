@@ -12,10 +12,9 @@ public protocol Plugin: AnyObject {
     var dependencies: [String] { get }
     
     static var dependencies: [Dependency] { get }
-    static var version: Version { get }
-    static var name: String { get }
+    static var specifier: Specifier { get set }
     
-    static func provideInstance(for vm: VM, resolvedDependencies: [String: Plugin]) -> Plugin
+    static func provideInstance(for vm: VM, resolvedDependencies: [Plugin]) -> Plugin
     
     func receive(message: LuaReceivable, from vm: VM) -> LuaSendable
 }

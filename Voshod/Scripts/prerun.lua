@@ -14,5 +14,4 @@ print(bundlePath, voshodScriptsPath)
 
 package.path = package.path .. ";" .. voshodScriptsPath .. "?.lua"
 
-import = require("import", vmUD)
-print(import)
+import = require "import" 
