@@ -103,6 +103,7 @@
 		1E2A59C5280F5F010045B8F5 /* Specifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specifier.swift; sourceTree = "<group>"; };
 		1E2A59C7280F5F0C0045B8F5 /* SpecifierPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifierPattern.swift; sourceTree = "<group>"; };
 		1E2A59C9281046520045B8F5 /* DependencyTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyTree.swift; sourceTree = "<group>"; };
+		1E2A59CB281062540045B8F5 /* dependencies.lua */ = {isa = PBXFileReference; lastKnownFileType = text; path = dependencies.lua; sourceTree = "<group>"; };
 		1E8EDAA328099ACD00616EB9 /* DependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolver.swift; sourceTree = "<group>"; };
 		1EDE89942803C045001FA144 /* Voshod.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Voshod.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1EDE89972803C045001FA144 /* Voshod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Voshod.h; sourceTree = "<group>"; };
@@ -258,6 +259,7 @@
 				1EDE89B62803C251001FA144 /* prerun.lua */,
 				1E14AE04280B740A00A11CC5 /* proxy.lua */,
 				1E22B4982808B55900D586C5 /* import.lua */,
+				1E2A59CB281062540045B8F5 /* dependencies.lua */,
 			);
 			path = Scripts;
 			sourceTree = "<group>";
