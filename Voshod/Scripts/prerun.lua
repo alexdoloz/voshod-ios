@@ -9,7 +9,9 @@ vmUD = ...
 Voshod = {}
 
 local pluginSpecifiers = { "JSON 1.1.0", "Std 0.1.0" }
-local dependencies = { "JSON 1.1.0": { "Std 0+" } }
+local requiredDependencies = { "JSON 1.1.0": {} }
+local optionalDependencies = { "JSON 1.1.0": { "Std" } }
+
 
 print("I'm in prerun script!")
 print(__voshod_resolve_specifier)
